@@ -1,5 +1,10 @@
 # Dashboard-ui-ant-design
 
+## Environment Variables
+ ```env
+    NODE_PATH=src
+ ```
+
 ## Installation
 In order to setup, run and start hacking the app locally you just have to:
 
