@@ -1,6 +1,3 @@
-import 'antd/dist/antd.css';
-import { AppWrapper } from './css';
-
 import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
@@ -9,6 +6,8 @@ import {
 
 import HomePage from 'containers/HomePage';
 import LoginPage from 'containers/LoginPage';
+
+import { AppWrapper } from './css';
 
 class App extends Component {
     render() {
