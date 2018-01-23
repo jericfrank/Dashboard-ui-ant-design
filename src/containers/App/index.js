@@ -1,10 +1,10 @@
+import 'antd/dist/antd.css';
+import { AppWrapper } from './css';
+
 import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
-    Route,
-    Link,
-    Redirect,
-    withRouter
+    Route
 } from 'react-router-dom'
 
 import HomePage from 'containers/HomePage';
@@ -14,10 +14,10 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <AppWrapper>
                     <Route path="/home" component={HomePage}/>
                     <Route path="/login" component={LoginPage}/>
-                </div>
+                </AppWrapper>
             </Router>
         );
     }
