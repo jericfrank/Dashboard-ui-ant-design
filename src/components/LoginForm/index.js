@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { LoginFormWrapper } from './css';
 
@@ -8,11 +9,7 @@ class LoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
+        this.props.form.validateFields( this.props.onFormSubmit );
     }
 
     render() {
@@ -52,4 +49,8 @@ class LoginForm extends Component {
     }
 }
 
-export default Form.create()(LoginForm);
+LoginForm.propTypes = {
+    onFormSubmit: PropTypes.func
+};
+
+export default Form.create()( LoginForm );

@@ -4,10 +4,16 @@ import LoginForm from 'components/LoginForm';
 import { LoginPageWrapper } from './css';
 
 class LoginPage extends Component {
+    handleFormSubmit = ( err, values ) => {
+        if ( !err ) {
+            console.log( values );
+        }
+    }
+
     render() {
         return (
             <LoginPageWrapper>
-                <LoginForm />
+                <LoginForm onFormSubmit={this.handleFormSubmit}/>
             </LoginPageWrapper>
         );
     }
