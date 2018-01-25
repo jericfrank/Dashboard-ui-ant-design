@@ -14,7 +14,7 @@ import LoginPage from 'containers/LoginPage';
 const DashboardRoute = ( { component : Component, ...rest } ) => {
     return (
         <Route { ...rest } render={ matchProps => (
-            <App>
+            <App { ...matchProps }>
                 <Component { ...matchProps } />
             </App>
         ) } />

@@ -7,6 +7,8 @@ class LoginPage extends Component {
     handleFormSubmit = ( err, values ) => {
         if ( !err ) {
             console.log( values );
+
+            this.props.history.push('/home');
         }
     }
 
