@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import Header from 'components/Layout/Header';
 import Sidebar from 'components/Layout/Sidebar';
 
-import { ContentStyled } from './css';
+import { ContentStyled, LayoutStyled } from './css';
 
 class LayoutWrapper extends Component {
     state = {
@@ -19,7 +19,7 @@ class LayoutWrapper extends Component {
 
     render() {
         return (
-            <Layout>
+            <LayoutStyled margin={this.state.collapsed ? '80px' : '200px'}>
                 <Sidebar collapsed={this.state.collapsed}/>
                 <Layout>
                     <Header collapsed={this.state.collapsed} toggle={this.toggle}/>
@@ -27,7 +27,7 @@ class LayoutWrapper extends Component {
                         { this.props.children }
                     </ContentStyled>
                 </Layout>
-            </Layout>
+            </LayoutStyled>
         );
     }
 }

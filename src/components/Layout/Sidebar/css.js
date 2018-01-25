@@ -5,6 +5,9 @@ const { Sider } = Layout;
 
 export const SiderStyled = styled( Sider )`
     min-height : 100vh;
+    overflow   : auto !important;
+    position   : fixed !important;
+    left       : 0 !important;
 `;
 
 export const Logo = styled.div`
