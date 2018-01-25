@@ -26,7 +26,7 @@ class App extends Component {
     render() {
         return (
             <AppWrapper margin={this.state.collapsed ? '80px' : '200px'}>
-                <Sidebar {...this.props} collapsed={this.state.collapsed} navs={SIDEBAR_NAVS}/>
+                <Sidebar {...this.props} collapsed={this.state.collapsed} toggle={this.toggle} navs={SIDEBAR_NAVS}/>
                 <Layout>
                     <Header collapsed={this.state.collapsed} toggle={this.toggle}/>
                     <ContentWrapper>

@@ -29,6 +29,9 @@ class Sidebar extends Component {
                 trigger={null}
                 collapsible
                 collapsed={this.props.collapsed}
+                breakpoint="lg"
+                collapsedWidth="80"
+                onCollapse={this.props.toggle}
             >
                 <Logo />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={[ this.props.location.pathname ]}>
