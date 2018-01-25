@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 
 import Header from 'components/Header';
@@ -8,6 +9,10 @@ import { SIDEBAR_NAVS } from './constants';
 import { ContentWrapper, AppWrapper } from './css';
 
 class App extends Component {
+    static propTypes = {
+        children : PropTypes.node,
+        location : PropTypes.object
+    };
     state = {
         collapsed : false
     };
