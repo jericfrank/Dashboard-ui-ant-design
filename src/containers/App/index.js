@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage';
+import SettingsPage from 'containers/SettingsPage';
 import LoginPage from 'containers/LoginPage';
 
 import Layout from 'components/Layout';
@@ -34,6 +35,7 @@ class App extends Component {
                         </Route>
                         <Route path="/login" component={LoginPage}/>
                         <DashboardRoute path="/home" component={HomePage}/>
+                        <DashboardRoute path="/settings" component={SettingsPage}/>
                     </Switch>
                 </AppWrapper>
             </Router>
