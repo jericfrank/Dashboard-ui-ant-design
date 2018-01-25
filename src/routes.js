@@ -10,6 +10,7 @@ import App from 'containers/App';
 import HomePage from 'containers/HomePage';
 import SettingsPage from 'containers/SettingsPage';
 import LoginPage from 'containers/LoginPage';
+import ForgotPasswordPage from 'containers/ForgotPasswordPage';
 
 const DashboardRoute = ( { component : Component, ...rest } ) => {
     return (
@@ -29,6 +30,7 @@ export default () => {
                     <Redirect to="/login" />
                 </Route>
                 <Route path="/login" component={LoginPage}/>
+                <Route path="/forgot-password" component={ForgotPasswordPage}/>
                 <DashboardRoute path="/home" component={HomePage}/>
                 <DashboardRoute path="/settings" component={SettingsPage}/>
             </Switch>
