@@ -1,44 +1,33 @@
 import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Redirect,
-    Switch
-} from 'react-router-dom';
+import { Layout } from 'antd';
 
-import HomePage from 'containers/HomePage';
-import SettingsPage from 'containers/SettingsPage';
-import LoginPage from 'containers/LoginPage';
+import Header from 'components/Header';
+import Sidebar from 'components/Sidebar';
 
-import Layout from 'components/Layout';
-
-import { AppWrapper } from './css';
-
-const DashboardRoute = ( { component : Component, ...rest } ) => {
-    return (
-        <Route { ...rest } render={ matchProps => (
-            <Layout>
-                <Component { ...matchProps } />
-            </Layout>
-        ) } />
-    )
-};
+import { ContentWrapper, AppWrapper } from './css';
 
 class App extends Component {
+    state = {
+        collapsed : false
+    };
+
+    toggle = () => {
+        this.setState({
+            collapsed : !this.state.collapsed
+        });
+    }
+
     render() {
         return (
-            <Router>
-                <AppWrapper>
-                    <Switch>
-                        <Route exact path="/">
-                            <Redirect to="/login" />
-                        </Route>
-                        <Route path="/login" component={LoginPage}/>
-                        <DashboardRoute path="/home" component={HomePage}/>
-                        <DashboardRoute path="/settings" component={SettingsPage}/>
-                    </Switch>
-                </AppWrapper>
-            </Router>
+            <AppWrapper margin={this.state.collapsed ? '80px' : '200px'}>
+                <Sidebar collapsed={this.state.collapsed}/>
+                <Layout>
+                    <Header collapsed={this.state.collapsed} toggle={this.toggle}/>
+                    <ContentWrapper>
+                        { this.props.children }
+                    </ContentWrapper>
+                </Layout>
+            </AppWrapper>
         );
     }
 }
