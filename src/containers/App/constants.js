@@ -9,5 +9,5 @@ export const SIDEBAR_NAVS = [ {
 }, {
 	name : 'Logout',
 	icon : 'lock',
-	path : '/'
+	path : '/logout'
 } ];

@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+
+import Auth from 'components/Auth';
 
 import { SiderStyled, Logo } from './css';
+
+const auth = new Auth();
 
 class Sidebar extends Component {
     constructor ( props ) {
         super( props );
 
-        this.renderNav = this.renderNav.bind( this );
+        this.renderNav  = this.renderNav.bind( this );
+        this.onSelected = this.onSelected.bind( this );
+    }
+
+    onSelected ( { key } ) {
+        if ( key === '/logout' ) {
+            auth.logout( this.props );
+        } else {
+            this.props.history.push( key );
+        }
     }
 
     renderNav ( nav, index ) {
         return (
             <Menu.Item key={nav.path}>
-                <Link to={nav.path}>
-                    <Icon type={nav.icon} />
-                    <span>{nav.name}</span>
-                </Link>
+                <Icon type={nav.icon} />
+                <span>{nav.name}</span>
             </Menu.Item>
         );
     }
@@ -34,7 +44,7 @@ class Sidebar extends Component {
                 onCollapse={this.props.toggle}
             >
                 <Logo />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={[ this.props.location.pathname ]}>
+                <Menu theme="dark" mode="inline" onClick={this.onSelected} defaultSelectedKeys={[ this.props.location.pathname ]}>
                     {this.props.navs.map( this.renderNav )}
                 </Menu>
             </SiderStyled>
