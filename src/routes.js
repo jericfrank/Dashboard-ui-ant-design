@@ -26,9 +26,21 @@ const handleAuthentication = ( props ) => {
 const DashboardRoute = ( { component : Component, ...rest } ) => {
     return (
         <Route { ...rest } render={ matchProps => (
+            auth.isAuthenticated() === true ?
             <App { ...matchProps }>
                 <Component { ...matchProps } />
             </App>
+            : <Redirect to="/login" />
+        ) } />
+    )
+};
+
+const AuthRoute = ( { component : Component, ...rest } ) => {
+    return (
+        <Route { ...rest } render={ matchProps => (
+            auth.isAuthenticated() === false ?
+            <Component { ...matchProps } />
+            : <Redirect to="/home" />
         ) } />
     )
 };
@@ -40,8 +52,8 @@ export default () => {
                 <Route exact path="/">
                     <Redirect to="/login" />
                 </Route>
-                <Route path="/login" component={LoginPage}/>
-                <Route path="/forgot-password" component={ForgotPasswordPage}/>
+                <AuthRoute path="/login" component={LoginPage}/>
+                <AuthRoute path="/forgot-password" component={ForgotPasswordPage}/>
                 <DashboardRoute path="/home" component={HomePage}/>
                 <DashboardRoute path="/settings" component={SettingsPage}/>
                 <Route path="/callback" render={(props) => {
