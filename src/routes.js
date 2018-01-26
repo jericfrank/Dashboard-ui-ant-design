@@ -12,6 +12,17 @@ import SettingsPage from 'containers/SettingsPage';
 import LoginPage from 'containers/LoginPage';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage';
 
+import Auth from 'components/Auth';
+import Callback from 'components/Callback';
+
+const auth = new Auth();
+
+const handleAuthentication = ( props ) => {
+    if (/access_token|id_token|error/.test(props.location.hash)) {
+        auth.handleAuthentication( props );
+    }
+}
+
 const DashboardRoute = ( { component : Component, ...rest } ) => {
     return (
         <Route { ...rest } render={ matchProps => (
@@ -33,6 +44,10 @@ export default () => {
                 <Route path="/forgot-password" component={ForgotPasswordPage}/>
                 <DashboardRoute path="/home" component={HomePage}/>
                 <DashboardRoute path="/settings" component={SettingsPage}/>
+                <Route path="/callback" render={(props) => {
+                    handleAuthentication(props);
+                    return <Callback {...props} />
+                }}/>
             </Switch>
         </Router>
 	)

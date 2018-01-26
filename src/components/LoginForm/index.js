@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import Alert from 'components/Alert';
+
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+
 import { LoginFormWrapper } from './css';
 
 const FormItem = Form.Item;
@@ -43,6 +47,7 @@ class LoginForm extends Component {
                         <Button type="primary" htmlType="submit" className="login-form-button">Log in</Button>
                         Or <a href="">register now!</a>
                     </FormItem>
+                    <Alert messages={this.props.error} type="error" />
                 </Form>
             </LoginFormWrapper>
         );
@@ -50,7 +55,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-    onFormSubmit: PropTypes.func
+    onFormSubmit : PropTypes.func.isRequired,
+    error        : PropTypes.string.isRequired
 };
 
 export default Form.create()( LoginForm );
