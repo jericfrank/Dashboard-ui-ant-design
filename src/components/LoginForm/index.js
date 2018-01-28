@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Alert from 'components/Alert';
+import LoginSocial from 'components/LoginSocial';
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
@@ -22,6 +23,9 @@ class LoginForm extends Component {
         return (
             <LoginFormWrapper>
                 <Form onSubmit={this.handleSubmit} className="login-form">
+                    <FormItem>
+                        <LoginSocial />
+                    </FormItem>
                     <FormItem>
                         {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
