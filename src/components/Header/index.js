@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Avatar, Icon } from 'antd';
 
 import { StyledHeader } from './css';
 
@@ -11,6 +11,7 @@ function HeaderWrapper ( props ) {
                 type={ props.collapsed ? 'menu-unfold' : 'menu-fold' }
                 onClick={ props.toggle }
             />
+            <Avatar className="avatar-img" shape="square" size="large" src={props.avatar} />
         </StyledHeader>
     )
 }

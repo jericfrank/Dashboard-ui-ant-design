@@ -19,4 +19,8 @@ export const StyledHeader = styled(Header)`
     .trigger:hover {
         color : #1890ff;
     }
+
+    .avatar-img {
+        
+    }
 `;
