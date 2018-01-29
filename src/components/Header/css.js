@@ -21,6 +21,8 @@ export const StyledHeader = styled(Header)`
     }
 
     .avatar-img {
-        
+        float   : right;
+        padding : 10px 24px;
+        cursor  : pointer;
     }
 `;

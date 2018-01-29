@@ -11,7 +11,9 @@ function HeaderWrapper ( props ) {
                 type={ props.collapsed ? 'menu-unfold' : 'menu-fold' }
                 onClick={ props.toggle }
             />
-            <Avatar className="avatar-img" shape="square" size="large" src={props.avatar} />
+            <div className="avatar-img">
+                <Avatar shape="square" size="large" src={props.avatar} />
+            </div>
         </StyledHeader>
     )
 }
