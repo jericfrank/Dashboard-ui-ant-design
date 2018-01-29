@@ -18,7 +18,7 @@ class ForgotPasswordPage extends Component {
     handleFormSubmit = ( err, { email } ) => {
         if ( !err ) {
             auth.auth0.changePassword({
-                connection : 'Username-Password-Authentication',
+                connection : process.env.REACT_APP_AUTH0_CONNECTION,
                 email      : email
             }, (err, resp) => {
                 if(err){

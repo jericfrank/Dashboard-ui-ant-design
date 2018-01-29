@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import auth0 from 'auth0-js';
 
+import Auth from 'components/Auth';
 import LoginForm from 'components/LoginForm';
-import variables from 'variables';
 
 import { LoginPageWrapper } from './css';
 
-const { AUTH_CONFIG } = variables;
-
-const webAuth = new auth0.WebAuth({
-    domain       : AUTH_CONFIG.domain,
-    clientID     : AUTH_CONFIG.clientId,
-    redirectUri  : AUTH_CONFIG.callbackUrl,
-    audience     : `https://${AUTH_CONFIG.domain}/userinfo`,
-    responseType : 'token id_token',
-    scope        : 'openid profile email'
-});
+const auth = new Auth();
 
 class LoginPage extends Component {
     state = {
@@ -24,8 +14,8 @@ class LoginPage extends Component {
 
     handleFormSubmit = ( err, values ) => {
         if ( !err ) {
-            webAuth.redirect.loginWithCredentials({
-                connection: 'Username-Password-Authentication',
+            auth.auth0.redirect.loginWithCredentials({
+                connection: process.env.REACT_APP_AUTH0_CONNECTION,
                 username: values.userName,
                 password: values.password,
                 scope: 'openid'

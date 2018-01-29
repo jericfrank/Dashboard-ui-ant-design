@@ -21,9 +21,9 @@
     "react-scripts": "1.1.0"
   },
   "scripts": {
-    "start": "react-app-rewired start NODE_PATH=src",
-    "build": "react-app-rewired build NODE_PATH=src",
-    "test": "react-app-rewired test --env=jsdom NODE_PATH=src",
+    "start": "sh -ac 'react-app-rewired start'",
+    "build": "sh -ac 'react-app-rewired build'",
+    "test": "sh -ac 'react-app-rewired test --env=jsdom'",
     "start:cra": "react-scripts start",
     "build:cra": "react-scripts build",
     "test:cra": "react-scripts test --env=jsdom",
