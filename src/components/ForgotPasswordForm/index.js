@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button } from 'antd';
 import { LoginFormWrapper } from './css';
 
+import Alert from 'components/Alert';
+
 const FormItem = Form.Item;
 
 class ForgotPasswordForm extends Component {
@@ -19,7 +21,7 @@ class ForgotPasswordForm extends Component {
             <LoginFormWrapper>
                 <Form onSubmit={this.handleSubmit} className="input-form">
                     <FormItem>
-                        {getFieldDecorator('userName', {
+                        {getFieldDecorator('email', {
                             rules: [{ required: true, message: 'Input your email!' }],
                         })(
                             <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="your@email.com" />
@@ -28,6 +30,7 @@ class ForgotPasswordForm extends Component {
                     <FormItem>
                         <Button type="primary" htmlType="submit" className="input-form-button">Send Email</Button>
                     </FormItem>
+                    <Alert messages={this.props.message} type={this.props.type} />
                 </Form>
             </LoginFormWrapper>
         );

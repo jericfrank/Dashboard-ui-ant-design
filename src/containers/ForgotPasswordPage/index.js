@@ -2,16 +2,31 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, Button } from 'antd';
 
+import Auth from 'components/Auth';
 import ForgotPasswordForm from 'components/ForgotPasswordForm';
 
 import { ForgotPageWrapper } from './css';
 
-class ForgotPasswordPage extends Component {
-    handleFormSubmit = ( err, values ) => {
-        if ( !err ) {
-            console.log( values );
+const auth = new Auth();
 
-            this.props.history.push('/login');
+class ForgotPasswordPage extends Component {
+    state = {
+        message : '',
+        type    : ''
+    };
+
+    handleFormSubmit = ( err, { email } ) => {
+        if ( !err ) {
+            auth.auth0.changePassword({
+                connection : 'Username-Password-Authentication',
+                email      : email
+            }, (err, resp) => {
+                if(err){
+                    this.setState({ message : err.description, type : 'error' });
+                }else{
+                    this.setState({ message : `We've just sent you an email to reset your password to ${email}`, type : 'success' });
+                }
+            });
         }
     }
 
@@ -19,11 +34,11 @@ class ForgotPasswordPage extends Component {
         return (
             <ForgotPageWrapper>
                 <Link to="/" className="back-icon">
-                    <Button type="primary" size="omitted">
+                    <Button type="primary">
                         <Icon type="arrow-left" /> back
                     </Button>
                 </Link>
-                <ForgotPasswordForm onFormSubmit={this.handleFormSubmit}/>
+                <ForgotPasswordForm onFormSubmit={this.handleFormSubmit} {...this.state}/>
             </ForgotPageWrapper>
         );
     }
