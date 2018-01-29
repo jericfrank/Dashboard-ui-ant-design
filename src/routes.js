@@ -10,6 +10,7 @@ import App from 'containers/App';
 import HomePage from 'containers/HomePage';
 import SettingsPage from 'containers/SettingsPage';
 import LoginPage from 'containers/LoginPage';
+import RegisterPage from 'containers/RegisterPage';
 import ForgotPasswordPage from 'containers/ForgotPasswordPage';
 
 import Auth from 'components/Auth';
@@ -53,6 +54,7 @@ export default () => {
                     <Redirect to="/login" />
                 </Route>
                 <AuthRoute path="/login" component={LoginPage}/>
+                <AuthRoute path="/register" component={RegisterPage}/>
                 <AuthRoute path="/forgot-password" component={ForgotPasswordPage}/>
                 <DashboardRoute path="/home" component={HomePage}/>
                 <DashboardRoute path="/settings" component={SettingsPage}/>

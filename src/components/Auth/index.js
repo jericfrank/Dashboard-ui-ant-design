@@ -54,9 +54,9 @@ export default class Auth {
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
         // navigate to the home route
-        
+
         // props.history.push('/login');
-        
+
         this.auth0.logout({
             returnTo: 'http://localhost:3000/login',
         });
