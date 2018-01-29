@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
-import { Icon, Button } from 'antd';
+import { FacebookLoginButton, GithubLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 import Auth from 'components/Auth';
 
 const auth = new Auth();
 
 class LoginSocial extends Component {
-    onHandleClick ( e ) {
+    onHandleClick ( social ) {
         auth.auth0.authorize({
-            connection: e.target.value
+            connection: social
         });
     }
 
     render() {
         return (
             <div>
-                <Button onClick={this.onHandleClick.bind( this )} value="facebook" type="primary" className="login-form-button">
-                    <Icon type="facebook" /> Login with Facebook
-                </Button>
-                <Button onClick={this.onHandleClick.bind( this )} value="github" type="primary" className="login-form-button">
-                    <Icon type="github" /> Login with Github
-                </Button>
-                <Button onClick={this.onHandleClick.bind( this )} value="google-oauth2" type="primary" className="login-form-button">
-                    <Icon type="google" /> Login with Google
-                </Button>
+                <FacebookLoginButton text="Login with Facebook" onClick={ () => this.onHandleClick('facebook') }/>
+                <GithubLoginButton text="Login with Github" onClick={ () => this.onHandleClick('github') } />
+                <GoogleLoginButton text="Login with Google" onClick={ () => this.onHandleClick('google-oauth2') } />
             </div>
         );
     }
